@@ -1,0 +1,82 @@
+body {
+    background-color: #eef9bf;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+}
+.upp {
+    width: 100%;
+}
+.header {
+    width: 100%;
+    color: #75B79E;
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+}
+.title {
+    font-size: 56px;
+    line-height: 66px;
+    letter-spacing: -0.004em;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    letter-spacing: -0.004em;
+}
+.par {
+    margin-left: 30px;
+}
+.cards1 {
+    height: 146px;
+    width: 117px;
+    background-color: #A7E9AF;
+    border: 1px solid #99CEA8;
+    box-sizing: border-box;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cards2 {
+    height: 146px;
+    width: 117px;
+    background-color: #A7E9AF;
+    border: 1px solid #99CEA8;
+    box-sizing: border-box;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 34px; 
+}
+.front {
+    height: 100px;
+    width: 100px;
+}
+.bottom {
+    display: flex;
+    justify-content: center;
+    margin-top: 47px;
+}
+/* responsive */
+@media (max-width: 450px) {
+	.bottom {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        margin-top: 0px; 
+        margin-bottom: 34px;
+    }
+    .title {
+        font-size: 36px;
+        line-height: 42.19px;
+        text-align: center;
+        letter-spacing: -0.004em;
+    }
+    .cards1 {
+        margin-top: 34px; 
+    }
+    .par {
+        margin-left: 0px;
+    }
+}
