@@ -26,9 +26,9 @@ body {
 .par {
     margin-left: 30px;
 }
-.cards1 {
-    height: 146px;
-    width: 117px;
+.face {
+    width: 100%;
+    height: 100%;
     background-color: #A7E9AF;
     border: 1px solid #99CEA8;
     box-sizing: border-box;
@@ -36,6 +36,16 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
+}
+.cards1 {
+    height: 146px;
+    width: 117px;
+    position: relative;
+    margin: 17px 0px;
 }
 .cards2 {
     height: 146px;
@@ -49,9 +59,20 @@ body {
     justify-content: center;
     margin-top: 34px; 
 }
-.front {
-    height: 100px;
-    width: 100px;
+.front > img {
+    height: 146px;
+    width: 117px;
+}
+.back {
+    transform: rotateY(180deg);
+}
+
+.backflip {
+    transform: rotateY(0deg);
+}
+
+.frontflip {
+    transform: rotateY(-180deg);
 }
 .bottom {
     display: flex;
