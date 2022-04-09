@@ -2,6 +2,12 @@ const cartas = ["bobrossparrot.gif", "explodyparrot.gif", "fiestaparrot.gif", "m
 
 let quantidadeCartas = parseInt(prompt("Com quantas cartas deseja jogar? (4, 6, 8, 10, 12 ou 14)"));
 
+let primeiraCarta;
+
+let segundaCarta;
+
+let podeVirar = true;
+
 while(quantidadeCartas % 2 !== 0 || quantidadeCartas < 4 || quantidadeCartas > 14) {
     quantidadeCartas = parseInt(prompt("Com quantas cartas deseja jogar? (4, 6, 8, 10, 12 ou 14)"));
 }
@@ -42,6 +48,43 @@ function aparecerCartas(numeroCartas) {
 aparecerCartas(quantidadeCartas); 
 
 function virarCartas(elemento) {
-    elemento.querySelector(".front").classList.add("frontflip");
-    elemento.querySelector(".back").classList.add("backflip");
+    if(podeVirar) {
+        elemento.querySelector(".front").classList.add("frontflip");
+        elemento.querySelector(".back").classList.add("backflip");
+        if (primeiraCarta === undefined) {
+            primeiraCarta = elemento;
+        }
+        else {
+            segundaCarta = elemento;
+            verificarPares() 
+        } 
+    }
+}
+
+// verificar se cartas são pares
+function verificarPares() {
+    const primeiraCartaTras = primeiraCarta.querySelector(".back > img").getAttribute("src");
+    const segundaCartaTras = segundaCarta.querySelector(".back > img").getAttribute("src");
+    const iguais = primeiraCartaTras === segundaCartaTras;
+
+    if (!iguais) {
+        podeVirar = false;
+        setTimeout(function() {
+            primeiraCarta.querySelector(".front").classList.remove("frontflip");
+            primeiraCarta.querySelector(".back").classList.remove("backflip");
+            segundaCarta.querySelector(".front").classList.remove("frontflip");
+            segundaCarta.querySelector(".back").classList.remove("backflip");
+        
+            primeiraCarta = undefined;
+            segundaCarta = undefined;
+
+            podeVirar = true;
+        }, 1000);
+    }
+    else {
+        primeiraCarta.removeAttribute("onclick");
+        segundaCarta.removeAttribute("onclick");
+        primeiraCarta = undefined;
+        segundaCarta = undefined;
+    }
 }
