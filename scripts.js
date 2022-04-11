@@ -8,6 +8,8 @@ let segundaCarta;
 
 let podeVirar = true;
 
+let quantidadeJogadas = 0;
+
 while(quantidadeCartas % 2 !== 0 || quantidadeCartas < 4 || quantidadeCartas > 14) {
     quantidadeCartas = parseInt(prompt("Com quantas cartas deseja jogar? (4, 6, 8, 10, 12 ou 14)"));
 }
@@ -58,6 +60,7 @@ function virarCartas(elemento) {
             segundaCarta = elemento;
             verificarPares() 
         } 
+        quantidadeJogadas ++;
     }
 }
 
@@ -86,5 +89,16 @@ function verificarPares() {
         segundaCarta.removeAttribute("onclick");
         primeiraCarta = undefined;
         segundaCarta = undefined;
+        verificaFimJogo();
+    }
+}
+
+function verificaFimJogo() {
+    const qtdCartasViradas = (document.querySelectorAll(".frontflip")).length
+    
+    if(qtdCartasViradas === quantidadeCartas) {
+        setTimeout(function() {
+        alert(`Você ganhou em ${quantidadeJogadas} jogadas!`);
+        },500);
     }
 }
